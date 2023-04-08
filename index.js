@@ -15,13 +15,13 @@ const setup = () => {
         if ($('#nameCheckbox').prop('checked')) {
             console.log("name checked");
             userProjectionFilters.name = true;
-        } else {
-            userProjectionFilters.name = false;}
+        }
         if ($('#weightCheckbox').prop('checked')) {
             console.log("weight checked");
             userProjectionFilters.weight = true;
         } else {
-            userProjectionFilters.weight = false;}
+            userProjectionFilters = {}
+        }
 
 
         console.log(lastClicked);
