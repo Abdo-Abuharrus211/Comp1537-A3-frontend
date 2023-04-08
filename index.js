@@ -23,10 +23,11 @@ const setup = () => {
         const query = {
             type: "nameSearch",
             name: $('#nameSearchInput').val(),
-            projectionFilters: {
-                name: true,
-                weight: false,
-            }
+            // projectionFilters: {
+            //     name: true,
+            //     weight: false,
+            // }
+            projectionFilters: userProjectionFilters
         }
 
         const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
