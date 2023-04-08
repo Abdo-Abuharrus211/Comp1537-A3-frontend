@@ -1,24 +1,7 @@
 
 const setup = () => {
+    // Setup event listeners
 
-
-    // Determining Projection Filters
-    // Begin with default projection filters
-    // var userProjectionFilters = {
-    //     name: true,
-    //     weight: false,
-    //     loves: false,
-    // }
-
-    // // If user checks a checkbox, change the corresponding projection filter to true
-    // $('#filterSubmitButton').click(async()  => {
-
-    // if ($('#nameCheckbox').prop('checked')) {
-    //     userProjectionFilters.name = true;}
-
-    // if ($('#weightCheckbox').prop('checked')) {
-    //     userProjectionFilters.weight = true;}
-    // });
 
     var lastClicked = "";
     // default projection filters
@@ -27,13 +10,15 @@ const setup = () => {
         weight: false,
     }
 
-    // If user checks a checkbox and clicks, change the corresponding projection filter to true
+    // If user checks a checkbox and clicks btn, change the corresponding projection filter to true
     $('#filterSubmitButton').click(async () => {
         if ($('#nameCheckbox').prop('checked')) {
+            console.log("name checked");
             userProjectionFilters.name = true;
         } else {
             userProjectionFilters.name = false;}
         if ($('#weightCheckbox').prop('checked')) {
+            console.log("weight checked");
             userProjectionFilters.weight = true;
         } else {
             userProjectionFilters.weight = false;}
@@ -50,10 +35,6 @@ const setup = () => {
         const query = {
             type: "nameSearch",
             name: $('#nameSearchInput').val(),
-            // projectionFilters: {
-            //     name: true,
-            //     weight: false,
-            // }
             projectionFilters: userProjectionFilters
         }
 
@@ -70,25 +51,6 @@ const setup = () => {
 
     // Weight Search
     $('#weightSearchButton').click(async () => {
-        var userProjectionFilters = {
-            name: true,
-            weight: false,
-            loves: false,
-        }
-
-        // If user checks a checkbox, change the corresponding projection filter to true
-        $('#filterSubmitButton').click(async () => {
-
-            if ($('#nameCheckbox').prop('checked')) {
-                userProjectionFilters.name = true;
-            }
-
-            if ($('#weightCheckbox').prop('checked')) {
-                userProjectionFilters.weight = true;
-            }
-        });
-
-
         const query = {
             type: "weightSearch",
             minWeight: parseInt($('#weightLowerLimitInput').val()),
@@ -97,8 +59,9 @@ const setup = () => {
                 name: true,
                 weight: true,
             }
-
         }
+        lastClicked = "#weightSearchButton";
+        console.log(lastClicked);
 
         const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
         $("#searchResults").empty();
@@ -109,14 +72,11 @@ const setup = () => {
     // Food Search
     $('#foodSearchButton').click(async () => {
         if ($('#appleCheckbox').prop('checked')) {
+            console.log("apple checked");
             const query = {
                 type: "foodSearch",
                 loves: "apple",
-                projectionFilters: {
-                    name: true,
-                    loves: true,
-                    weight: true,
-                }
+                projectionFilters: userProjectionFilters
             }
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
@@ -124,14 +84,11 @@ const setup = () => {
             $("#searchResults").html(JSON.stringify(res.data));
         }
         else if ($('#carrotCheckbox').prop('checked')) {
+            console.log("carrot checked");
             const query = {
                 type: "foodSearch",
                 loves: "carrot",
-                projectionFilters: {
-                    name: true,
-                    loves: true,
-                    weight: true,
-                }
+                projectionFilters: userProjectionFilters
             }
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
@@ -142,11 +99,7 @@ const setup = () => {
             const query = {
                 type: "foodSearch",
                 loves: ["apple", "carrot"],
-                projectionFilters: {
-                    name: true,
-                    loves: true,
-                    weight: true,
-                }
+                projectionFilters: userProjectionFilters
             }
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
