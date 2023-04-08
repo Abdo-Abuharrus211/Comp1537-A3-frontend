@@ -78,7 +78,24 @@ const setup = () => {
 
     // Food Search
     $('#foodSearchButton').click(async () => {
-        if ($('#appleCheckbox').prop('checked')) {
+
+        if ($('#appleCheckbox').prop('checked') && $('#carrotCheckbox').prop('checked')) {
+            const query = {
+                type: "foodSearch",
+                loves: ["apple", "carrot"],
+                projectionFilters: userProjectionFilters
+            }
+
+            lastClicked = "#foodSearchButton";
+
+            console.log(query);
+            const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
+
+            $("#searchResults").empty();
+            $("#searchResults").html(JSON.stringify(res.data));
+        }
+
+        else if ($('#appleCheckbox').prop('checked')) {
             console.log("apple checked");
             const query = {
                 type: "foodSearch",
@@ -109,21 +126,7 @@ const setup = () => {
             $("#searchResults").empty();
             $("#searchResults").html(JSON.stringify(res.data));
         }
-        else if ($('#appleCheckbox').prop('checked') && $('#carrotCheckbox').prop('checked')) {
-            const query = {
-                type: "foodSearch",
-                loves: ["apple", "carrot"],
-                projectionFilters: userProjectionFilters
-            }
 
-            lastClicked = "#foodSearchButton";
-            
-            console.log(query);
-            const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
-
-            $("#searchResults").empty();
-            $("#searchResults").html(JSON.stringify(res.data));
-        }
     });
 }
 
