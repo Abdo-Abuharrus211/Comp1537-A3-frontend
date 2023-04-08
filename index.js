@@ -28,8 +28,6 @@ const setup = () => {
                 name: true,
                 weight: true,
             }
-        } else {
-            userProjectionFilters = {}
         }
 
 
