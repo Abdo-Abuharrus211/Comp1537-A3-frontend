@@ -1,7 +1,23 @@
 
 const setup = () => {
 
+    // Determining Projection Filters
+    // Begin with default projection filters
+    var userProjectionFilters = {
+        name: true,
+        weight: false,
+        loves: false,
+    }
 
+    if ($('#nameCheckbox').is(':checked')) {
+        userProjectionFilters.name = true;}
+    if ($('#weightCheckbox').is(':checked')) {
+        userProjectionFilters.weight = true;}
+    if ($('#lovesCheckbox').is(':checked')) {
+        userProjectionFilters.loves = true;}
+
+
+    // Determining Query Type
     $('#nameSearchButton').click(async () => {
         //todo send ajax to backend/server 
         const query = {
