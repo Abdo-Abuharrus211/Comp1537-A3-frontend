@@ -1,6 +1,7 @@
 
 const setup = () => {
 
+
     // Determining Projection Filters
     // Begin with default projection filters
     // var userProjectionFilters = {
@@ -12,32 +13,39 @@ const setup = () => {
     // // If user checks a checkbox, change the corresponding projection filter to true
     // $('#filterSubmitButton').click(async()  => {
 
-    // if ($('#nameCheckbox').is(':checked')) {
+    // if ($('#nameCheckbox').prop('checked')) {
     //     userProjectionFilters.name = true;}
 
-    // if ($('#weightCheckbox').is(':checked')) {
+    // if ($('#weightCheckbox').prop('checked')) {
     //     userProjectionFilters.weight = true;}
     // });
+
+    var lastClicked = "";
+    // default projection filters
+    var userProjectionFilters = {
+        name: true,
+        weight: false,
+    }
+
+    // If user checks a checkbox and clicks, change the corresponding projection filter to true
+    $('#filterSubmitButton').click(async () => {
+        if ($('#nameCheckbox').prop('checked')) {
+            userProjectionFilters.name = true;
+        } else {
+            userProjectionFilters.name = false;}
+        if ($('#weightCheckbox').prop('checked')) {
+            userProjectionFilters.weight = true;
+        } else {
+            userProjectionFilters.weight = false;}
+            
+
+        $(lastClicked).trigger('click');
+    });
 
 
     // Determining Query Type
     $('#nameSearchButton').click(async () => {
-        // default projection filters
-        var userProjectionFilters = {
-            name: true,
-            weight: false,
-            loves: false,
-        }
-    
-        // If user checks a checkbox, change the corresponding projection filter to true
-        $('#filterSubmitButton').click(async()  => {
-        if ($('#nameCheckbox').is(':checked')) {
-            userProjectionFilters.name = true;}
-        if ($('#weightCheckbox').is(':checked')) {
-            userProjectionFilters.weight = true;}
-        });
-    
-    // setup query object
+        // setup query object
         const query = {
             type: "nameSearch",
             name: $('#nameSearchInput').val(),
@@ -48,6 +56,8 @@ const setup = () => {
             projectionFilters: userProjectionFilters
         }
 
+        lastClicked = "#nameSearchButton";
+        console.log(lastClicked);
         const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
         $("#searchResults").empty();
@@ -55,24 +65,29 @@ const setup = () => {
 
     });
 
+
+
+    // Weight Search
     $('#weightSearchButton').click(async () => {
         var userProjectionFilters = {
             name: true,
             weight: false,
             loves: false,
         }
-    
+
         // If user checks a checkbox, change the corresponding projection filter to true
-        $('#filterSubmitButton').click(async()  => {
-    
-        if ($('#nameCheckbox').is(':checked')) {
-            userProjectionFilters.name = true;}
-    
-        if ($('#weightCheckbox').is(':checked')) {
-            userProjectionFilters.weight = true;}
+        $('#filterSubmitButton').click(async () => {
+
+            if ($('#nameCheckbox').prop('checked')) {
+                userProjectionFilters.name = true;
+            }
+
+            if ($('#weightCheckbox').prop('checked')) {
+                userProjectionFilters.weight = true;
+            }
         });
-    
-    
+
+
         const query = {
             type: "weightSearch",
             minWeight: parseInt($('#weightLowerLimitInput').val()),
@@ -90,26 +105,9 @@ const setup = () => {
 
     });
 
-
+    // Food Search
     $('#foodSearchButton').click(async () => {
-        var userProjectionFilters = {
-            name: true,
-            weight: false,
-            loves: false,
-        }
-    
-        // If user checks a checkbox, change the corresponding projection filter to true
-        $('#filterSubmitButton').click(async()  => {
-    
-        if ($('#nameCheckbox').is(':checked')) {
-            userProjectionFilters.name = true;}
-    
-        if ($('#weightCheckbox').is(':checked')) {
-            userProjectionFilters.weight = true;}
-        });
-    
-    
-        if ($('#appleCheckbox').is(':checked')) {
+        if ($('#appleCheckbox').prop('checked')) {
             const query = {
                 type: "foodSearch",
                 loves: "apple",
@@ -124,7 +122,7 @@ const setup = () => {
             $("#searchResults").empty();
             $("#searchResults").html(JSON.stringify(res.data));
         }
-        else if ($('#carrotCheckbox').is(':checked')) {
+        else if ($('#carrotCheckbox').prop('checked')) {
             const query = {
                 type: "foodSearch",
                 loves: "carrot",
