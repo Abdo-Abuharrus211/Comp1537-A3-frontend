@@ -37,8 +37,9 @@ const setup = () => {
             userProjectionFilters.weight = true;
         } else {
             userProjectionFilters.weight = false;}
-            
 
+
+        console.log(lastClicked);
         $(lastClicked).trigger('click');
     });
 
