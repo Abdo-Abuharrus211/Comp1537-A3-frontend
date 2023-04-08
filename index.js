@@ -5,20 +5,29 @@ const setup = () => {
 
     var lastClicked = "";
     // default projection filters
-    var userProjectionFilters = {
-        name: true,
-        weight: false,
-    }
+    var userProjectionFilters = {}
 
     // If user checks a checkbox and clicks btn, change the corresponding projection filter to true
     $('#filterSubmitButton').click(async () => {
         if ($('#nameCheckbox').prop('checked')) {
             console.log("name checked");
-            userProjectionFilters.name = true;
+            userProjectionFilters = {
+                name: true,
+                weight: false,
+            }
         }
         if ($('#weightCheckbox').prop('checked')) {
             console.log("weight checked");
-            userProjectionFilters.weight = true;
+            userProjectionFilters = {
+                name: false,
+                weight: true,
+            }
+        } else if ($('#nameCheckbox').prop('checked') && $('#weightCheckbox').prop('checked')) {
+            console.log("both checked");
+            userProjectionFilters = {
+                name: true,
+                weight: true,
+            }
         } else {
             userProjectionFilters = {}
         }
@@ -79,7 +88,7 @@ const setup = () => {
             }
             console.log(query);
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
-            
+
             $("#searchResults").empty();
             $("#searchResults").html(JSON.stringify(res.data));
         }
@@ -92,7 +101,7 @@ const setup = () => {
             }
             console.log(query);
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
-            
+
             $("#searchResults").empty();
             $("#searchResults").html(JSON.stringify(res.data));
         }
