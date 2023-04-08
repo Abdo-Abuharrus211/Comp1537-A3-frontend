@@ -20,7 +20,7 @@ const setup = () => {
 
     });
 
-    $('#weightSearchCheckbox').click(async () => {
+    $('#weightSearchButton').click(async () => {
         if ($("weightSearchCheckbox").is(':checked')) {
             const query = {
                 type: "weightSearch",
