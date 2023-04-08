@@ -104,7 +104,7 @@ const setup = () => {
             $("#searchResults").empty();
             $("#searchResults").html(JSON.stringify(res.data));
         }
-        else {
+        else if ($('#appleCheckbox').prop('checked') && $('#carrotCheckbox').prop('checked')) {
             const query = {
                 type: "foodSearch",
                 loves: ["apple", "carrot"],
