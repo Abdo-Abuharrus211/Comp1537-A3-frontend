@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +14,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- import axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
+
 </head>
+
 <body>
     <h1>Search/Selection</h1>
     <h3>Search for unicorn by name</h3>
@@ -28,34 +30,26 @@
     <label for="">and</label>
     <input type="text" id="weightUpperLimitInput" placeholder="Enter Upper Limit">
     <button id="weightSearchButton">submit</button>
-    
+
     <!-- Now the food toggles -->
     <form id="unicorn-food-form">
         <h3>Unicorn Food list</h3>
-        <label>
-          <input type="checkbox" name="appleCheck" value="apple"> Apple
-        </label>
-        <label>
-          <input type="checkbox" name="carrotCheck" value="carrot"> Carrot
-        </label>
+        <label> Apple </label>
+        <input type="checkbox" name="appleCheck" value="apple"> Apple
+        <label> Carrot </label>
+        <input type="checkbox" name="carrotCheck" value="carrot"> Carrot
         <br>
         <input type="submit" value="Submit">
-      </form>
-      
-      <hr>
+    </form>
 
-      <h3>Filters/Projection</h3>
-      <form id="unicorn-projection-form">
-        <label>
-          <input type="checkbox" name="nameCheck" value="name"> Name
-        </label>
-        <label>
-          <input type="checkbox" name="weightSearchCheckbox" value="weight"> Weight
-        </label>
-        <label>
-          <input type="checkbox" name="foodCheck" value="food"> Food
-        </label>
-        <br>
+    <hr>
+
+    <h3>Filters/Projection</h3>
+    <form id="unicorn-projection-form">
+        <label> Name </label>
+        <input type="checkbox" name="nameCheck" value="name">
+        <label> Weight </label>
+        <input type="checkbox" name="weightSearchCheckbox" value="weight">
         <input type="submit" value="Submit">
     </form>
     <hr>
@@ -65,4 +59,5 @@
 
     <script src="index.js"></script>
 </body>
+
 </html>
