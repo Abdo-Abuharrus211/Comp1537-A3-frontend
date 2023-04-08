@@ -40,8 +40,8 @@ const setup = () => {
         // if ($("weightSearchCheckbox").is(':checked')) {}
         const query = {
             type: "weightSearch",
-            minWeight: $('#weightLowerLimitInput').val(),
-            maxWeight: $('#weightUpperLimitInput').val(),
+            minWeight: parseInt($('#weightLowerLimitInput').val()),
+            maxWeight: parseInt($('#weightUpperLimitInput').val()),
             projectionFilters: {
                 name: true,
                 weight: true,
