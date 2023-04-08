@@ -37,6 +37,7 @@ const setup = () => {
             name: $('#nameSearchInput').val(),
             projectionFilters: userProjectionFilters
         }
+        console.log(query);
 
         lastClicked = "#nameSearchButton";
         console.log(lastClicked);
@@ -55,11 +56,9 @@ const setup = () => {
             type: "weightSearch",
             minWeight: parseInt($('#weightLowerLimitInput').val()),
             maxWeight: parseInt($('#weightUpperLimitInput').val()),
-            projectionFilters: {
-                name: true,
-                weight: true,
-            }
+            projectionFilters: userProjectionFilters
         }
+        console.log(query);
         lastClicked = "#weightSearchButton";
         console.log(lastClicked);
 
@@ -78,8 +77,9 @@ const setup = () => {
                 loves: "apple",
                 projectionFilters: userProjectionFilters
             }
+            console.log(query);
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
-
+            
             $("#searchResults").empty();
             $("#searchResults").html(JSON.stringify(res.data));
         }
@@ -90,8 +90,9 @@ const setup = () => {
                 loves: "carrot",
                 projectionFilters: userProjectionFilters
             }
+            console.log(query);
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
-
+            
             $("#searchResults").empty();
             $("#searchResults").html(JSON.stringify(res.data));
         }
@@ -101,6 +102,7 @@ const setup = () => {
                 loves: ["apple", "carrot"],
                 projectionFilters: userProjectionFilters
             }
+            console.log(query);
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
             $("#searchResults").empty();
