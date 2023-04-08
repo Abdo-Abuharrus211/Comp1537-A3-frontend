@@ -21,7 +21,7 @@ const setup = () => {
     });
 
     $('#weightSearchButton').click(async () => {
-        if ($("weightSearchCheckbox").is(':checked')) {
+        // if ($("weightSearchCheckbox").is(':checked')) {}
             const query = {
                 type: "weightSearch",
                 minWeight: $('#weightLowerLimitInput').val(),
@@ -29,15 +29,13 @@ const setup = () => {
                 projectionFilters: {
                     name: true,
                     weight: true,
-
                 }
+            
             }
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
             $("#searchResults").empty();
             $("#searchResults").html(JSON.stringify(res.data));
-        }
-
 
     });
 
