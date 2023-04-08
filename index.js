@@ -32,12 +32,12 @@ const setup = () => {
 
                 }
             }
+            const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
+
+            $("#searchResults").empty();
+            $("#searchResults").html(JSON.stringify(res.data));
         }
 
-        const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
-
-        $("#searchResults").empty();
-        $("#searchResults").html(JSON.stringify(res.data));
 
     });
 
