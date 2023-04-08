@@ -5,13 +5,14 @@ const setup = () => {
         const query = {
             type: "nameSearch",
             name: $('#nameSearchInput').val(),
-            loves: $('input[name="food"]:checked').map(function () {
+            loves: $('input[name="foodCheck"]:checked').map(function () {
                 return $(this).val();
             }).get(),
-            minWeight: $('#minWeightInput').val(),
-            maxWeight: $('#maxWeightInput').val(),
+            minWeight: $('#weightLowerLimitInput').val(),
+            maxWeight: $('#weightUpperLimitInput').val(),
             projectionFilters: {
                 name: true,
+                _id: false,
                 weight: false,
                 loves: false,
             }
@@ -23,6 +24,7 @@ const setup = () => {
             query.selectionArgument = { weight: { $gte: query.minWeight, $lte: query.maxWeight } };
             query.projectionFilters = {
                 name: false,
+                _id: false,
                 weight: true,
                 loves: false,
             }
@@ -36,11 +38,11 @@ const setup = () => {
 
     $('#weightSearchCheckbox').click(function () {
         if ($(this).is(':checked')) {
-            $('#minWeightInput').prop('disabled', false);
-            $('#maxWeightInput').prop('disabled', false);
+            $('#weightLowerLimitInput').prop('disabled', false);
+            $('#weightUpperLimitInput').prop('disabled', false);
         } else {
-            $('#minWeightInput').prop('disabled', true);
-            $('#maxWeightInput').prop('disabled', true);
+            $('#weightLowerLimitInput').prop('disabled', true);
+            $('#weightUpperLimitInput').prop('disabled', true);
         }
     });
 }
