@@ -5,7 +5,7 @@ const setup = () => {
         const query = {
             type: "nameSearch",
             name: $('#nameSearchInput').val(),
-            loves: $('input[name="foodCheck"]:checked').map(function () {
+            loves: $('input[name="food"]:checked').map(function () {
                 return $(this).val();
             }).get(),
             minWeight: $('#weightLowerLimitInput').val(),
