@@ -9,12 +9,18 @@ const setup = () => {
         loves: false,
     }
 
+    // If user checks a checkbox, change the corresponding projection filter to true
+    if ($('#filterSubmitButton').click()) {
+
     if ($('#nameCheckbox').is(':checked')) {
         userProjectionFilters.name = true;}
+
     if ($('#weightCheckbox').is(':checked')) {
         userProjectionFilters.weight = true;}
+
     if ($('#lovesCheckbox').is(':checked')) {
         userProjectionFilters.loves = true;}
+    }
 
 
     // Determining Query Type
