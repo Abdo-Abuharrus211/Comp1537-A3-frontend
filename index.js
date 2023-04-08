@@ -22,7 +22,8 @@ const setup = () => {
                 name: false,
                 weight: true,
             }
-        } else if ($('#nameCheckbox').prop('checked') && $('#weightCheckbox').prop('checked')) {
+        }
+        if ($('#nameCheckbox').prop('checked') && $('#weightCheckbox').prop('checked')) {
             console.log("both checked");
             userProjectionFilters = {
                 name: true,
