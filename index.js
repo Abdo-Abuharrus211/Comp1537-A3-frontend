@@ -48,6 +48,9 @@ const setup = () => {
             }
 
         }
+
+        console.log(query.minWeight);
+        console.log(query.maxWeight);
         const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
         $("#searchResults").empty();
