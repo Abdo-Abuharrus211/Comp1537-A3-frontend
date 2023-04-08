@@ -85,6 +85,8 @@ const setup = () => {
                 loves: "apple",
                 projectionFilters: userProjectionFilters
             }
+
+            lastClicked = "#foodSearchButton";
             console.log(query);
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
@@ -98,6 +100,9 @@ const setup = () => {
                 loves: "carrot",
                 projectionFilters: userProjectionFilters
             }
+
+            lastClicked = "#foodSearchButton";
+
             console.log(query);
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
@@ -110,6 +115,9 @@ const setup = () => {
                 loves: ["apple", "carrot"],
                 projectionFilters: userProjectionFilters
             }
+
+            lastClicked = "#foodSearchButton";
+            
             console.log(query);
             const res = await axios.post('https://fantastic-cyan-dress.cyclic.app//search', query)
 
