@@ -54,41 +54,41 @@ const setup = () => {
         $("#searchResults").empty();
         $("#searchResults").html(JSON.stringify(res.data));
 
-    });
-    $("#tabledResults").empty(); // clear tabled results first
-    // make a table using res.data
-    // const makeTable = (data) => {
-    //     const table = document.createElement('table');
-    //     const thead = document.createElement('thead');
-    //     const tbody = document.createElement('tbody');
-    const table = $('<table>');
-    const headerRow = $('<tr>');
-    const nameHeader = $('<thead>').html('Name');
-    const weightHeader = $('<thead>').html('Weight');
-    const vaccinatedHeader = $('<thead>').html('Vaccinated');
-
-    // Add headers to header row and then onto table
-    headerRow.append(nameHeader);
-    headerRow.append(weightHeader);
-    headerRow.append(vaccinatedHeader);
-    table.append(headerRow);
-
-    for (let i = 0; i < res.data.length; i++) {
-        const row = $('<tr>');
-        const name = $('<td>').html(res.data[i].name);
-        const weight = $('<td>').html(res.data[i].weight);
-        const vaccinated = $('<td>').html(res.data[i].vaccinated);
-        if (res.data[i].vaccinated) {
-            vaccinated.css("backgroud-color", "green"); //Change color later
-        } else {
-            vaccinated.css("backgroud-color", "red"); //Change color later
+        $("#tabledResults").empty(); // clear tabled results first
+        // make a table using res.data
+        // const makeTable = (data) => {
+        //     const table = document.createElement('table');
+        //     const thead = document.createElement('thead');
+        //     const tbody = document.createElement('tbody');
+        const table = $('<table>');
+        const headerRow = $('<tr>');
+        const nameHeader = $('<thead>').html('Name');
+        const weightHeader = $('<thead>').html('Weight');
+        const vaccinatedHeader = $('<thead>').html('Vaccinated');
+    
+        // Add headers to header row and then onto table
+        headerRow.append(nameHeader);
+        headerRow.append(weightHeader);
+        headerRow.append(vaccinatedHeader);
+        table.append(headerRow);
+    
+        for (let i = 0; i < res.data.length; i++) {
+            const row = $('<tr>');
+            const name = $('<td>').html(res.data[i].name);
+            const weight = $('<td>').html(res.data[i].weight);
+            const vaccinated = $('<td>').html(res.data[i].vaccinated);
+            if (res.data[i].vaccinated) {
+                vaccinated.css("backgroud-color", "green"); //Change color later
+            } else {
+                vaccinated.css("backgroud-color", "red"); //Change color later
+            }
+            row.append(name);
+            row.append(weight);
+            row.append(vaccinated);
+            table.append(row);
         }
-        row.append(name);
-        row.append(weight);
-        row.append(vaccinated);
-        table.append(row);
-    }
-    $('#tabledResults').append(table);
+        $('#tabledResults').append(table);
+    });
 
 
 
