@@ -62,9 +62,9 @@ const setup = () => {
         //     const tbody = document.createElement('tbody');
         const table = $('<table>');
         const headerRow = $('<tr>');
-        const nameHeader = $('<thead>').html('Name');
-        const weightHeader = $('<thead>').html('Weight');
-        const vaccinatedHeader = $('<thead>').html('Vaccinated');
+        const nameHeader = $('<th>').html('Name');
+        const weightHeader = $('<th>').html('Weight');
+        const vaccinatedHeader = $('<th>').html('Vaccinated');
     
         // Add headers to header row and then onto table
         headerRow.append(nameHeader);
