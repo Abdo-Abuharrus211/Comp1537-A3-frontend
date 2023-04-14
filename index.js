@@ -61,7 +61,7 @@ const setup = () => {
         //     const thead = document.createElement('thead');
         //     const tbody = document.createElement('tbody');
         const table = $('<table>');
-        const headerRow = $('<tr">');
+        const headerRow = $('<tr>');
         const nameHeader = $('<th>').html('Name');
         const weightHeader = $('<th>').html('Weight');
         const vaccinatedHeader = $('<th>').html('Vaccinated');
