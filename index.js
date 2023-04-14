@@ -61,10 +61,10 @@ const setup = () => {
         //     const thead = document.createElement('thead');
         //     const tbody = document.createElement('tbody');
         const table = $('<table>');
-        const headerRow = $('<tr>');
-        const nameHeader = $('<th>').html('Name');
-        const weightHeader = $('<th>').html('Weight');
-        const vaccinatedHeader = $('<th>').html('Vaccinated');
+        const headerRow = $('<th style="padding: 5%;">');
+        const nameHeader = $('<th style="padding: 5%;">').html('Name');
+        const weightHeader = $('<th style="padding: 5%;">').html('Weight');
+        const vaccinatedHeader = $('<th style="padding: 5%;">').html('Vaccinated');
     
         // Add headers to header row and then onto table
         headerRow.append(nameHeader);
