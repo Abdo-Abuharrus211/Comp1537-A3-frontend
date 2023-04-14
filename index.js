@@ -62,9 +62,9 @@ const setup = () => {
         //     const tbody = document.createElement('tbody');
         const table = $('<table>');
         const headerRow = $('<tr">');
-        const nameHeader = $('<thead >').html('Name');
+        const nameHeader = $('<thead>').html('Name');
         const weightHeader = $('<thead>').html('Weight');
-        const vaccinatedHeader = $('<thead >').html('Vaccinated');
+        const vaccinatedHeader = $('<thead>').html('Vaccinated');
 
         // Add headers to header row and then onto table
         headerRow.append(nameHeader);
@@ -73,10 +73,10 @@ const setup = () => {
         table.append(headerRow);
 
         for (let i = 0; i < res.data.length; i++) {
-            const row = $('<tr >');
-            const name = $('<td >').html(res.data[i].name);
-            const weight = $('<td >').html(res.data[i].weight);
-            const vaccinated = $('<td >').html(res.data[i].vaccinated);
+            const row = $('<tr>');
+            const name = $('<td>').html(res.data[i].name);
+            const weight = $('<td>').html(res.data[i].weight);
+            const vaccinated = $('<td>').html(res.data[i].vaccinated);
             if (res.data[i].vaccinated) {
                 vaccinated.css("backgroud-color", "green"); //Change color later
             } else {
